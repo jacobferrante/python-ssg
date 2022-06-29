@@ -1,10 +1,9 @@
 import time
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
-from ssg import write_file
 
 class Watcher:
-
+    ## Initzle the watcher funtion
     def __init__(self, directory=".", handler=FileSystemEventHandler()):
         self.observer = Observer()
         self.handler = handler
@@ -25,10 +24,8 @@ class Watcher:
 
 
 class MyHandler(FileSystemEventHandler):
-
     def on_any_event(self, event):
-        write_file()
-
+        print(event)
 
 if __name__=="__main__":
     w = Watcher(".", MyHandler())
